@@ -1,12 +1,21 @@
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const prefix = ("!");
 
 client.on('ready', ready => {
   console.log("I'm ready")
 })
 
+
 client.on('message', message => {
-  if(message.content.startsWith("move")) {
+  if(message.content.startsWith(prefix + "move")) {
+    if(message.author.id !== "268478587651358721") {
+      var trieduser = message.author;
+      //botRepliesArray.forEach(function(item, index, array) {
+      //  return message.channel.send("Authorized users only. " + trieduser)
+       // if(message.author.bot) return;
+      //})
+    }
     let getMentions = message.mentions.members.array();
     let messageContent = message.content.split(" ").slice(-1)[0];
     
@@ -17,4 +26,37 @@ client.on('message', message => {
   }
 });
 
-client.login('Your Bot Tocken here');
+client.on('message', message => {
+  if(message.content.startsWith(prefix + "moveall")) {
+    var channelMembers;
+    var channelNameMember;
+    var getChannels = message.guild.channels.array();
+
+    getChannels.forEach(function(item, index, array) {
+      channelMembers = item.members.array();     
+      channelMembers.forEach(function(item, index, array) {
+        channelNameMember = item.id
+        let messageContent = message.content.split(" ").slice(-1)[0];
+        var channel = message.guild.channels.find('name', messageContent);
+        message.guild.member(channelNameMember).setVoiceChannel(channel);
+      })
+    })
+  }
+});
+219635276320997387
+140568694097969152
+
+
+client.on('message', message => {
+  if(message.content.startsWith(prefix + "m")) {
+    let lastChannel = message.content.split(" ").slice(-1)[0];
+    var getID = message.author.id;
+    var channel = message.guild.channels.find('name', lastChannel);
+    message.guild.member(getID).setVoiceChannel(channel);
+    
+  }
+});
+
+//21
+
+client.login('Mzc2OTA2NTcwMjk2MTk3MTIz.DOFNIQ.cuz-MPB0-6yL8-h3yUsWz7xRQfk');
