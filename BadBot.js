@@ -50,19 +50,4 @@ client.on('message', message => {
     })
   }
 });
-
-
-
-client.on('message', message => {
-  if(message.content.startsWith(prefix + "m")) {
-    let lastChannel = message.content.split(" ").slice(-1)[0];
-    var getID = message.author.id;
-    var channel = message.guild.channels.find('name', lastChannel);
-    message.guild.member(getID).setVoiceChannel(channel);
-    
-  }
-});
-
-//21
-
 client.login('Your Bot Token Here');
