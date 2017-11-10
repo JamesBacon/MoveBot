@@ -11,10 +11,10 @@ client.on('message', message => {
   if(message.content.startsWith(prefix + "move")) {
     if(message.author.id !== "268478587651358721") {
       var trieduser = message.author;
-      //botRepliesArray.forEach(function(item, index, array) {
-      //  return message.channel.send("Authorized users only. " + trieduser)
-       // if(message.author.bot) return;
-      //})
+      botRepliesArray.forEach(function(item, index, array) {
+        return message.channel.send("Authorized users only. " + trieduser)
+        if(message.author.bot) return;
+      })
     }
     let getMentions = message.mentions.members.array();
     let messageContent = message.content.split(" ").slice(-1)[0];
@@ -27,6 +27,13 @@ client.on('message', message => {
 });
 
 client.on('message', message => {
+  if(message.author.id !== "268478587651358721") {
+      var trieduser = message.author;
+      botRepliesArray.forEach(function(item, index, array) {
+        return message.channel.send("Authorized users only. " + trieduser)
+        if(message.author.bot) return;
+      })
+    }
   if(message.content.startsWith(prefix + "moveall")) {
     var channelMembers;
     var channelNameMember;
@@ -43,8 +50,7 @@ client.on('message', message => {
     })
   }
 });
-219635276320997387
-140568694097969152
+
 
 
 client.on('message', message => {
@@ -59,4 +65,4 @@ client.on('message', message => {
 
 //21
 
-client.login('Mzc2OTA2NTcwMjk2MTk3MTIz.DOFNIQ.cuz-MPB0-6yL8-h3yUsWz7xRQfk');
+client.login('Your Bot Token Here');
